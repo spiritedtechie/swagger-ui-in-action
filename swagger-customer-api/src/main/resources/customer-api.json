@@ -1,0 +1,190 @@
+{
+	"apiVersion": "1.0",
+	"swaggerVersion": "1.1",
+	"basePath": "http://localhost:8080/swagger-customer-api/api",
+	"resourcePath": "/customers",
+	"apis": [
+	{
+		"path": "/customers",
+		"description": "Operations about customers",
+		"operations": [{
+			"httpMethod": "GET",
+			"summary": "Get all customers with optional filter",
+			"notes": "This will retrieve all customers blah blah blah",
+			"responseClass": "Customers",
+			"nickname": "getCustomers",
+			"produces": ["application/json", "application/xml"],
+			"parameters": [
+			{
+                                "name": "hello",
+                                "description": "Test header",
+                                "paramType": "header",
+                                "required": false,
+                                "dataType": "string"
+                        },
+			{
+				"name": "vulnerable",
+				"description": "Filter only vulnerable customers",
+				"paramType": "query",
+				"required": false,
+				"allowMultiple": false,
+				"dataType": "boolean"
+			}],
+			"errorResponses": [
+			{
+				"code": 404,
+				"reason": "Customer not found"
+			},
+			{
+				"code": 200,
+				"reason": "Customer(s) found"
+			}]
+		},
+		{
+			"httpMethod": "POST",
+                        "summary": "Create a customer",
+                        "nickname": "createCustomer",
+			"responseClass": "Customer",
+			"produces": ["application/json", "application/xml"],
+                        "parameters": [{
+				"description": "Customer to create",
+				"paramType": "body",
+				"required": true,
+				"allowMultiple": false,
+				"dataType": "Customer",
+				"supportedContentTypes" : ["application/json","application/xml"]	
+                        }],
+                        "errorResponses": [
+                        {
+                                "code": 400,
+                                "reason": "Customer details supplied are invalid"
+                        },
+                        {
+                                "code": 201,
+                                "reason": "Customer has been created"
+                        }]
+
+		}]
+	},
+	{
+                "path": "/customers/{id}",
+                "description": "Operations about a single customer",
+                "operations": [{
+                        "httpMethod": "GET",
+                        "summary": "Get customer by id",
+                        "responseClass": "Customer",
+                        "nickname": "getCustomer",
+                        "produces": ["application/json", "application/xml"],
+                        "parameters": [
+                        {
+                                "name": "id",
+                                "description": "The customer id of the customer to find",
+                                "paramType": "path",
+                                "required": true,
+                                "dataType": "string"
+                        }],
+                        "errorResponses": [
+                        {
+                                "code": 404,
+                                "reason": "Customer not found"
+                        },
+                        {
+                                "code": 200,
+                                "reason": "Customer found"
+                        }]
+                },
+		{
+                        "httpMethod": "PUT",
+                        "summary": "Update an existing customer",
+                        "responseClass": "Customer",
+                        "nickname": "updateCustomer",
+                        "produces": ["application/json", "application/xml"],
+                        "parameters": [
+			{
+                                "name": "id",
+                                "description": "The customer id of the customer to update",
+                                "paramType": "path",
+                                "required": true,
+                                "dataType": "string"
+                        },
+			{
+                                "description": "Customer details to update",
+                                "paramType": "body",
+				"supportedContentTypes" : ["application/json","application/xml"],
+                                "required": true,
+                                "dataType": "Customer"
+                        }],
+                        "errorResponses": [
+                        {
+                                "code": 400,
+                                "reason": "Customer details supplied are invalid"
+                        },
+			{
+				"code": 404,
+                                "reason": "Customer to update is not found"
+			},
+                        {
+                                "code": 200,
+                                "reason": "Customer has been updated"
+                        }]
+
+                },
+		{
+                        "httpMethod": "DELETE",
+                        "summary": "Delete an existing customer",
+                        "responseClass": "Customer",
+                        "nickname": "deleteCustomer",
+                        "produces": ["application/json", "application/xml"],
+                        "parameters": [
+                        {
+                                "name": "id",
+                                "description": "The customer id of the customer to delete",
+                                "paramType": "path",
+                                "required": true,
+                                "dataType": "string"
+                        }
+                        ],
+                        "errorResponses": [
+                        {
+                                "code": 200,
+                                "reason": "Customer has been deleted if found"
+                        }]
+
+                }
+		]
+        }
+	],
+	"models": {
+		"Customers": {
+			"id": "Customers",
+			"properties": {
+				"customers": {
+					"items": {
+						"$ref":"Customer"
+					},
+					"type": "Array"
+				}
+			}
+		}, 
+		"Customer" :{
+			"id" : "Customer",
+			"properties" : {
+				"id" : {
+					"type":"string"
+				},
+				"firstName" : {
+					"type":"string"
+				},
+				"lastName" : {
+					"type" : "string"
+				},
+				"address" : {
+					"type" : "string"
+				},
+				"vulnerable" : {
+					"type" : "boolean"
+				}
+			}
+		}
+	}
+}
