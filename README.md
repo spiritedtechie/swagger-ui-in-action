@@ -7,9 +7,10 @@ How To Use:
 
 1. Install an Apache HTTP Server running on localhost:80
 2. Symlink our Swagger Specification directory (api-spec) to the Apache service directory (/var/www/api-spec)
-3. Very the specification is being served:
+3. Verify the specification is being served:
   
     http://localhost:80/api-spec/api.json
+    http://localhost:80/api-spec/customer
   
 4. Get yourself the Swagger UI from here: https://github.com/wordnik/swagger-ui
 5. Change the properties in the Swagger UI src index.html, then rebuild Swagger UI:
