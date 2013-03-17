@@ -7,7 +7,7 @@ How To Use:
 
 1. Install an Apache HTTP Server running on localhost:80
 2. Symlink our Swagger Specification directory (api-spec) to the Apache service directory (/var/www/api-spec)
-3. Very the specification is being served:
+3. Verify the specification is being served:
   
     http://localhost:80/api-spec/api.json
   
