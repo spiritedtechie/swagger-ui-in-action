@@ -1,0 +1,11 @@
+{
+    "apis": [
+        {
+            "path": "/api-spec/customer",
+            "description": ""
+        }
+    ],
+    "swaggerVersion": "1.1",
+    "basePath": "http://localhost:80",
+    "apiVersion": "1.0"
+}
