@@ -17,9 +17,10 @@ How To Use
 4. Grab the Swagger UI from here: https://github.com/wordnik/swagger-ui
 
     git clone git@github.com:wordnik/swagger-ui.git
-    (or just download the zip directly).
     
-5. Symlink the Swagger UI dist directory to /var/www/swagger-ui
+    (or just download the zip directly and extract)
+    
+5. Symlink/shortcut to the Swagger UI dist directory to /var/www/swagger-ui
 
    sudo ln -s /opt/swagger-ui/dist /var/www/swagger-ui
 
@@ -27,12 +28,18 @@ How To Use
 
     http://localhost/swagger-ui/index.html
     
-7. Change the API specification location from the default Petstore example to the following:
+7. Change the API specification location on the Swagger UI top bar to the following:
 
    http://localhost/api-spec/api.json
+   
+   This should show the documentation for the Customer API.
 
 8. Have a JBoss 7 instance running on port 8080
 
-9. Build swagger-customer-api and deploy to JBoss 7 standalone
+   ${JBOSS_HOME}/bin/standalone.sh -b 0.0.0.0
 
-10. Verify the Swagger UI Try-It-Out feature by performing CRUD operations on the Customer resource.
+9. Build swagger-customer-api and deploy WAR to JBoss 7 standalone deployments
+
+   mvn clean package
+
+10. Check that the Swagger UI works by performing CRUD operations on the Customer resource.
