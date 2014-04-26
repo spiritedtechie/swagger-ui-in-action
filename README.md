@@ -26,9 +26,13 @@ How To Use
 6. Verify the Swagger UI is being served
 
     http://localhost/swagger-ui/index.html
+    
+7. Change the API specification location from the default Petstore example to the following:
 
-7. Have a JBoss 7 instance running on port 8080
+   http://localhost/api-spec/api.json
 
-8. Build swagger-customer-api and deploy to JBoss 7 standalone
+8. Have a JBoss 7 instance running on port 8080
 
-9. Verify the Swagger UI Try-It-Out feature by performing CRUD operations on the Customer resource.
+9. Build swagger-customer-api and deploy to JBoss 7 standalone
+
+10. Verify the Swagger UI Try-It-Out feature by performing CRUD operations on the Customer resource.
