@@ -1,7 +1,7 @@
 swagger-in-action
 =================
 
-Working example of API documentation using Wordnik Swagger. 
+Working example of try-it-out style API documentation using Wordnik Swagger. 
 
 How To Use
 ----------
