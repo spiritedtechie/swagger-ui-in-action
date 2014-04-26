@@ -17,20 +17,14 @@ How To Use
     git clone git@github.com:wordnik/swagger-ui.git
     (or just download the zip directly).
     
-5. Change the properties in the Swagger UI src/main/html/index.html file, then rebuild Swagger UI:
-  
-    discoveryUrl:"http://localhost:80/api-spec/api.json",
-    apiKey:"",
-    supportHeaderParams: true,
-    supportedSubmitMethods: ['get', 'post', 'put', 'delete']
+5. Symlink the Swagger UI dist directory to /var/www/swagger-ui
 
-    Build instructions on the Swagger UI Github homepage.
+   sudo ln -s /opt/swagger-ui/dist /var/www/swagger-ui
 
-6. Symlink the rebuilt Swagger UI dist directory to /var/www/swagger-ui
-7. Verify the Swagger UI is being served
+6. Verify the Swagger UI is being served
 
-    http://localhost:80/swagger-ui
+    http://localhost/swagger-ui/index.html
 
-8. Have a JBoss 7 instance running on port 8080
-9. Build swagger-customer-api and deploy to JBoss 7 standalone
-10. Verify the Swagger UI Try-It-Out feature by performing CRUD operations on the Customer resource.
+7. Have a JBoss 7 instance running on port 8080
+8. Build swagger-customer-api and deploy to JBoss 7 standalone
+9. Verify the Swagger UI Try-It-Out feature by performing CRUD operations on the Customer resource.
