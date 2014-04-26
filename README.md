@@ -7,7 +7,9 @@ How To Use
 ----------
 
 1. Install an Apache HTTP Server running on localhost:80
+
 2. Symlink (or copy) the Swagger Specification directory (api-spec) to the Apache service directory (/var/www/api-spec)
+
 3. Verify the specification is being served:
   
     http://localhost:80/api-spec/api.json
@@ -26,5 +28,7 @@ How To Use
     http://localhost/swagger-ui/index.html
 
 7. Have a JBoss 7 instance running on port 8080
+
 8. Build swagger-customer-api and deploy to JBoss 7 standalone
+
 9. Verify the Swagger UI Try-It-Out feature by performing CRUD operations on the Customer resource.
