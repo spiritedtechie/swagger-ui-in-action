@@ -8,9 +8,9 @@ How To Use
 
 1. Install an Apache HTTP Server running on localhost:80
 
-2. Symlink (or copy) the Swagger Specification directory (api-spec) to the Apache service directory (/var/www/api-spec)
+2. Symlink (or copy) the Swagger API specification directory (api-spec) to the Apache service directory (/var/www/api-spec)
 
-3. Verify the specification is being served:
+3. Verify the API specification is being served:
   
     http://localhost:80/api-spec/api.json
   
@@ -32,13 +32,13 @@ How To Use
 
    http://localhost/api-spec/api.json
    
-   This should show the documentation for the Customer API.
+   This should show the documentation for the Customer API, replacing the default Petstore API.
 
 8. Have a JBoss 7 instance running on port 8080
 
    ${JBOSS_HOME}/bin/standalone.sh -b 0.0.0.0
 
-9. Build swagger-customer-api and deploy WAR to JBoss 7 standalone deployments
+9. Build swagger-customer-api and deploy the WAR to JBoss 7 standalone deployments
 
    mvn clean package
 
