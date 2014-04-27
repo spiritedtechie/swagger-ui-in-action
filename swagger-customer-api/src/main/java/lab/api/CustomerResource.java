@@ -49,9 +49,8 @@ public class CustomerResource {
 
         final Customers customers = service.allCustomers(vulnerableOnly);
 
-        if (customers == null || customers.getCustomers() == null || customers.getCustomers().isEmpty()) {
-            return Response.status(Status.NOT_FOUND).entity("Customers not found").build();
-        }
+        if (customers == null || customers.getCustomers() == null || customers.getCustomers().isEmpty()) return Response
+                .status(Status.NOT_FOUND).entity("Customers not found").build();
 
         return Response.ok(customers).build();
     }
@@ -65,9 +64,7 @@ public class CustomerResource {
 
         final Customer customer = service.findCustomer(customerId);
 
-        if (customer == null) {
-            return Response.status(Status.NOT_FOUND).entity("Customer not found").build();
-        }
+        if (customer == null) return Response.status(Status.NOT_FOUND).entity("Customer not found").build();
 
         return Response.ok(customer).build();
     }
@@ -93,9 +90,7 @@ public class CustomerResource {
 
         final Customer findCustomer = service.findCustomer(customerId);
 
-        if (findCustomer == null) {
-            return Response.status(Status.NOT_FOUND).entity("Customer not found").build();
-        }
+        if (findCustomer == null) return Response.status(Status.NOT_FOUND).entity("Customer not found").build();
 
         customer.setId(customerId);
         final Customer updatedCustomer = service.updateCustomer(customer);
@@ -111,9 +106,7 @@ public class CustomerResource {
 
         final Customer deletedCustomer = service.deleteCustomer(customerId);
 
-        if (deletedCustomer != null) {
-            return Response.ok().entity(deletedCustomer).build();
-        }
+        if (deletedCustomer != null) return Response.ok().entity(deletedCustomer).build();
 
         return Response.ok().entity("No customer to delete").build();
     }

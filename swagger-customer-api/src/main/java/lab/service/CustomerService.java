@@ -43,9 +43,8 @@ public class CustomerService {
             customerIdSequence++;
         }
 
-        if (customerMap.containsKey(customer.getId())) {
+        if (customerMap.containsKey(customer.getId()))
             throw new IllegalArgumentException("Customer already exists for id: " + customer.getId());
-        }
 
         customerMap.put(customer.getId(), customer);
         LOG.debug("Customer map: " + customerMap);
@@ -57,18 +56,14 @@ public class CustomerService {
 
         if (customerMap.containsKey(customer.getId())) {
             customerMap.put(customer.getId(), customer);
-        } else {
-            throw new IllegalArgumentException("Customer cannot be updated, not found");
-        }
+        } else throw new IllegalArgumentException("Customer cannot be updated, not found");
 
         return customer;
     }
 
     public Customer findCustomer(final String customerId) {
 
-        if (customerMap.containsKey(customerId)) {
-            return customerMap.get(customerId);
-        }
+        if (customerMap.containsKey(customerId)) return customerMap.get(customerId);
 
         return null;
     }
