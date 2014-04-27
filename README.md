@@ -40,8 +40,8 @@ How To Use
 
    ${JBOSS_HOME}/bin/standalone.sh -b 0.0.0.0
 
-9. Build swagger-customer-api and deploy the WAR to JBoss 7 standalone deployments
+9. Build the implementing service (swagger-customer-api) and deploy the WAR to JBoss 7 standalone deployments
 
    mvn clean package
 
-10. Check that the Swagger UI works by performing CRUD operations on the Customer resource.
+10. Check that the it all works (i.e. Swagger UI talks to the implementing service) by performing the CRUD operations from within the Swagger UI documentation.
