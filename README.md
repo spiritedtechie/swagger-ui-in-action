@@ -1,32 +1,47 @@
-swagger-in-action
+swagger-ui-in-action
 =================
 
-Working example of API documentation using Wordnik Swagger. 
+Working example of try-it-out style API documentation using Wordnik Swagger UI.
+
+Note: this example uses Swagger UI and the API specification as standalone - there is no integration of Swagger directly into the implementing service.
 
 How To Use
 ----------
 
 1. Install an Apache HTTP Server running on localhost:80
-2. Symlink the Swagger Specification directory (api-spec) to the Apache service directory (/var/www/api-spec)
-3. Verify the specification is being served:
+
+2. Symlink (or copy) the Swagger API specification directory (api-spec) to the Apache service directory (/var/www/api-spec)
+
+3. Verify the API specification is being served:
   
     http://localhost:80/api-spec/api.json
   
 4. Grab the Swagger UI from here: https://github.com/wordnik/swagger-ui
-5. Change the properties in the Swagger UI src/main/html/index.html file, then rebuild Swagger UI:
-  
-    discoveryUrl:"http://localhost:80/api-spec/api.json",
-    apiKey:"",
-    supportHeaderParams: true,
-    supportedSubmitMethods: ['get', 'post', 'put', 'delete']
 
-    Build instructions on the Swagger UI Github homepage.
+    git clone git@github.com:wordnik/swagger-ui.git
+    
+    (or just download the zip directly and extract)
+    
+5. Symlink/shortcut to the Swagger UI dist directory to /var/www/swagger-ui
 
-6. Symlink the rebuilt Swagger UI dist directory to /var/www/swagger-ui
-7. Verify the Swagger UI is being served
+   sudo ln -s /opt/swagger-ui/dist /var/www/swagger-ui
 
-    http://localhost:80/swagger-ui
+6. Verify the Swagger UI is being served
+
+    http://localhost/swagger-ui/index.html
+    
+7. Change the API specification location on the Swagger UI top bar to the following:
+
+   http://localhost/api-spec/api.json
+   
+   This should show the documentation for the Customer API, replacing the default Petstore API.
 
 8. Have a JBoss 7 instance running on port 8080
-9. Build swagger-customer-api and deploy to JBoss 7 standalone
-10. Verify the Swagger UI Try-It-Out feature by performing CRUD operations on the Customer resource.
+
+   ${JBOSS_HOME}/bin/standalone.sh -b 0.0.0.0
+
+9. Build the implementing service (swagger-customer-api) and deploy the WAR to JBoss 7 standalone deployments
+
+   mvn clean package
+
+10. Check that the it all works (i.e. Swagger UI talks to the implementing service) by performing the CRUD operations from within the Swagger UI documentation.
