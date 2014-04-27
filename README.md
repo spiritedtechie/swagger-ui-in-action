@@ -1,7 +1,9 @@
-swagger-in-action
+swagger-ui-in-action
 =================
 
-Working example of try-it-out style API documentation using Wordnik Swagger. 
+Working example of try-it-out style API documentation using Wordnik Swagger UI.
+
+Note: this example uses Swagger UI and the API specification as standalone - there is no integration of Swagger directly into the implementing service.
 
 How To Use
 ----------
