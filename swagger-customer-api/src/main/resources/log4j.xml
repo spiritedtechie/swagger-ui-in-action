@@ -9,11 +9,8 @@
 		</layout>
 	</appender>
 
-	<appender name="metrics" class="com.yammer.metrics.log4j.InstrumentedAppender" />
-
 	<root>
 		<priority value="debug" />
 		<appender-ref ref="console" />
-		<appender-ref ref="metrics" />
 	</root>
 </log4j:configuration>
