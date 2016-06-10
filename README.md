@@ -18,13 +18,13 @@ How To Use
   
 4. Grab the Swagger UI from here: https://github.com/wordnik/swagger-ui
 
-    git clone git@github.com:wordnik/swagger-ui.git
+        git clone git@github.com:wordnik/swagger-ui.git
     
     (or just download the zip directly and extract)
     
 5. Symlink/shortcut to the Swagger UI dist directory to /var/www/swagger-ui
 
-   sudo ln -s /opt/swagger-ui/dist /var/www/swagger-ui
+        sudo ln -s /opt/swagger-ui/dist /var/www/swagger-ui
 
 6. Verify the Swagger UI is being served
 
@@ -38,10 +38,10 @@ How To Use
 
 8. Have a JBoss 7 instance running on port 8080
 
-   ${JBOSS_HOME}/bin/standalone.sh -b 0.0.0.0
+        ${JBOSS_HOME}/bin/standalone.sh -b 0.0.0.0
 
 9. Build the implementing service (swagger-customer-api) and deploy the WAR to JBoss 7 standalone deployments
 
-   mvn clean package
+        mvn clean package
 
 10. Check that the it all works (i.e. Swagger UI talks to the implementing service) by performing the CRUD operations from within the Swagger UI documentation.
