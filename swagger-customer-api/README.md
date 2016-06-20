@@ -14,20 +14,20 @@ Setup
 
     java -jar build/libs/swagger-customer-api-1.0.jar
     
-It runs on the default port 8080.
+It runs on the default port 8090.
 
 API Usage
 ---------
 
 ###### To get customer(s)
 
-GET http://localhost:8080/customers
+GET http://localhost:8090/customers
 
-GET http://localhost:8080/customers/1
+GET http://localhost:8090/customers/1
 
 ###### To create a new customer
 
-POST http://localhost:8080/customers
+POST http://localhost:8090/customers
 
     ContentType: application/json
     {
@@ -40,7 +40,7 @@ POST http://localhost:8080/customers
 
 ###### To update a new customer
 
-PUT http://localhost:8080/customers/3
+PUT http://localhost:8090/customers/3
 
     ContentType: application/json
     {
@@ -53,4 +53,8 @@ PUT http://localhost:8080/customers/3
 
 ###### To delete a new customer
 
-DELETE http://localhost:8080/customers/3
+DELETE http://localhost:8090/customers/3
+
+###### To view the API specification
+
+GET http://localhost:8090/api-doc
