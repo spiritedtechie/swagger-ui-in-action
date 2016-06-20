@@ -1,4 +1,4 @@
-package lab.domain;
+package lab.model;
 
 import java.util.ArrayList;
 import java.util.List;

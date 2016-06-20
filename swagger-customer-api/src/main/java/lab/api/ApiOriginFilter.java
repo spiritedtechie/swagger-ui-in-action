@@ -7,11 +7,15 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Component;
 
+@WebFilter
+@Component
 public class ApiOriginFilter implements javax.servlet.Filter {
 
     private static Log LOG = LogFactory.getLog(ApiOriginFilter.class);

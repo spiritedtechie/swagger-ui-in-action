@@ -1,4 +1,4 @@
-package lab.domain;
+package lab.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

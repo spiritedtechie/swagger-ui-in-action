@@ -1,32 +1,21 @@
 package lab.api;
 
-import java.net.URI;
-
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.OPTIONS;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
-import lab.domain.Customer;
-import lab.domain.Customers;
+import lab.model.Customer;
+import lab.model.Customers;
 import lab.service.CustomerService;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import java.net.URI;
+
 @Component
-@Path("/api/customers")
+@Path("/customers")
 public class CustomerResource {
 
     private static final Log LOG = LogFactory.getLog(CustomerResource.class);
@@ -42,35 +31,36 @@ public class CustomerResource {
     }
 
     @GET
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response getCustomers(@QueryParam("vulnerable") final boolean vulnerableOnly) {
 
         LOG.info("*** Customers Requested. Vulnerable? " + vulnerableOnly);
 
         final Customers customers = service.allCustomers(vulnerableOnly);
 
-        if (customers == null || customers.getCustomers() == null || customers.getCustomers().isEmpty()) return Response
-                .status(Status.NOT_FOUND).entity("Customers not found").build();
+        if (customers == null || customers.getCustomers() == null || customers.getCustomers().isEmpty())
+            return customerNotFound();
 
         return Response.ok(customers).build();
     }
 
     @GET
     @Path("/{customerId}")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response getCustomer(@PathParam("customerId") final String customerId) {
 
         LOG.info("*** Customer Requested With Id: " + customerId);
 
         final Customer customer = service.findCustomer(customerId);
 
-        if (customer == null) return Response.status(Status.NOT_FOUND).entity("Customer not found").build();
+        if (customer == null)
+            return customerNotFound();
 
         return Response.ok(customer).build();
     }
 
     @POST
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response createCustomer(final Customer customer) throws Exception {
 
         LOG.info("*** Customer Creation Requested: " + customer);
@@ -82,7 +72,7 @@ public class CustomerResource {
 
     @PUT
     @Path("/{customerId}")
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response updateCustomer(@PathParam("customerId") final String customerId, final Customer customer)
             throws Exception {
 
@@ -90,7 +80,8 @@ public class CustomerResource {
 
         final Customer findCustomer = service.findCustomer(customerId);
 
-        if (findCustomer == null) return Response.status(Status.NOT_FOUND).entity("Customer not found").build();
+        if (findCustomer == null)
+            return customerNotFound();
 
         customer.setId(customerId);
         final Customer updatedCustomer = service.updateCustomer(customer);
@@ -107,21 +98,27 @@ public class CustomerResource {
         final Customer deletedCustomer = service.deleteCustomer(customerId);
 
         if (deletedCustomer != null) return Response.ok().entity(deletedCustomer).build();
-
-        return Response.ok().entity("No customer to delete").build();
-    }
-
-    @OPTIONS
-    @Path("/{path:.*}")
-    public Response options() {
-
-        return Response.ok().build();
+        else return noCustomerToDelete();
     }
 
     @OPTIONS
     public Response options2() {
 
         return Response.ok().build();
+    }
+
+    private Response noCustomerToDelete() {
+        return Response
+                .status(Status.OK)
+                .entity("{ \"msg\" : \"No customer to delete\" }")
+                .build();
+    }
+
+    private Response customerNotFound() {
+        return Response
+                .status(Status.NOT_FOUND)
+                .entity("{ \"error\" : \"Customers not found\" }")
+                .build();
     }
 
 }

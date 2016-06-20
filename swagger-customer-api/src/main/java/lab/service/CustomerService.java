@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import lab.api.CustomerResource;
-import lab.domain.Customer;
-import lab.domain.Customers;
+import lab.model.Customer;
+import lab.model.Customers;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
