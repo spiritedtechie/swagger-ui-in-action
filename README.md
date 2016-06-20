@@ -36,12 +36,6 @@ How To Use
    
    This should show the documentation for the Customer API, replacing the default Petstore API.
 
-8. Have a JBoss 7 instance running on port 8080
+8. Run the customer API service (follow instructions in subfolder README)
 
-        ${JBOSS_HOME}/bin/standalone.sh -b 0.0.0.0
-
-9. Build the implementing service (swagger-customer-api) and deploy the WAR to JBoss 7 standalone deployments
-
-        mvn clean package
-
-10. Check that the it all works (i.e. Swagger UI talks to the implementing service) by performing the CRUD operations from within the Swagger UI documentation.
+9. Check that the it all works (i.e. Swagger UI talks to the implementing service) by performing the CRUD operations from within the Swagger UI documentation.
