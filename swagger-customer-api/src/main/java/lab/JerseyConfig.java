@@ -1,5 +1,6 @@
 package lab;
 
+import lab.api.ApiDocResource;
 import lab.api.CustomerResource;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ public class JerseyConfig extends ResourceConfig {
 
     private void registerEndpoints() {
         register(CustomerResource.class);
+        register(ApiDocResource.class);
     }
 
 }
