@@ -1,41 +1,33 @@
-swagger-ui-in-action
-=================
+Description
+-----------
 
-Working example of try-it-out style API documentation using Wordnik Swagger UI.
+Working example of Try-It-Out style API documentation using Swagger UI.
 
-Note: this example uses Swagger UI and the API specification as standalone - there is no integration of Swagger directly into the implementing service.
+The API specification is Swagger 2.0 (Open API) specification, served out of the Customer service as a separate resource.
 
 How To Use
 ----------
 
-1. Install an Apache HTTP Server running on localhost:80
+1. Run the customer service (follow instructions in subfolder README)
 
-2. Symlink (or copy) the Swagger API specification directory (api-spec) to the Apache service directory (/var/www/api-spec)
+2. Check manually the service is serving the API specification:
 
-3. Verify the API specification is being served:
-  
-    http://localhost:80/api-spec/api.json
-  
-4. Grab the Swagger UI from here: https://github.com/wordnik/swagger-ui
+GET http://localhost:8090/api-doc
 
-        git clone git@github.com:wordnik/swagger-ui.git
-    
-    (or just download the zip directly and extract)
-    
-5. Symlink/shortcut to the Swagger UI dist directory to /var/www/swagger-ui
+2. Go to:
 
-        sudo ln -s /opt/swagger-ui/dist /var/www/swagger-ui
+http://petstore.swagger.io/
 
-6. Verify the Swagger UI is being served
+3. Change URL in top bar to:
 
-    http://localhost/swagger-ui/index.html
-    
-7. Change the API specification location on the Swagger UI top bar to the following:
+http://localhost:8090/api-doc
 
-   http://localhost/api-spec/api.json
-   
-   This should show the documentation for the Customer API, replacing the default Petstore API.
+4. Hit 'Explore' and expand 'default'. You should see the operations on Customer.
 
-8. Run the customer API service (follow instructions in subfolder README)
+5. Have a play with each operation. These work against the deployed service.
 
-9. Check that the it all works (i.e. Swagger UI talks to the implementing service) by performing the CRUD operations from within the Swagger UI documentation.
+
+Details
+-------
+
+The Swagger spec is defined in swagger-customer-api/src/main/resources/api.json
