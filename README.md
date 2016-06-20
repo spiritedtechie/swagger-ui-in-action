@@ -8,23 +8,23 @@ The API specification is Swagger 2.0 (Open API) specification, served out of the
 How To Use
 ----------
 
-1. Run the customer service (follow instructions in subfolder README)
+1) Run the customer service (follow instructions in subfolder README)
 
-2. Check manually the service is serving the API specification:
+2) Check manually the service is serving the API specification:
 
 GET http://localhost:8090/api-doc
 
-2. Go to:
+3) Go to:
 
 http://petstore.swagger.io/
 
-3. Change URL in top bar to:
+4) Change URL in top bar to:
 
 http://localhost:8090/api-doc
 
-4. Hit 'Explore' and expand 'default'. You should see the operations on Customer.
+5) Hit 'Explore' and expand 'default'. You should see the operations on Customer.
 
-5. Have a play with each operation. These work against the deployed service.
+6) Have a play with each operation. These work against the deployed service.
 
 
 Details
