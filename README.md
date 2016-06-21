@@ -3,7 +3,7 @@ Description
 
 Working example of Try-It-Out style API documentation using Swagger UI.
 
-The API specification is Swagger 2.0 (Open API) specification, served out of the Customer service as a separate resource.
+The API specification is Swagger 2.0 (Open API) specification, served out of the Customer service as a separate resource. In this example, it has been manually drafted in JSON format - there is another Github project for defining the API specification via Swagger annotations (https://github.com/spiritedtechie/swagger-annotations-in-action)
 
 How To Use
 ----------
