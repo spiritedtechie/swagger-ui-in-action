@@ -7,13 +7,13 @@ Setup
 -----
 
 1) Build the application
-    
-    ./gradlew clean build
-
+```    
+./gradlew clean build
+```
 3) Run the Spring Boot application from the project root
-
-    java -jar build/libs/swagger-customer-api-1.0.jar
-    
+```
+java -jar build/libs/swagger-customer-api-1.0.jar
+```   
 It runs on the default port 8090.
 
 API Usage
