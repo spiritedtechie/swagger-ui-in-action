@@ -11,17 +11,17 @@ How To Use
 1) Run the customer service (follow instructions in subfolder README)
 
 2) Check manually the service is serving the API specification:
-
+```
 GET http://localhost:8090/api-doc
-
+```
 3) Go to:
-
+```
 http://petstore.swagger.io/
-
+```
 4) Change URL in top bar to:
-
+```
 http://localhost:8090/api-doc
-
+```
 5) Hit 'Explore' and expand 'default'. You should see the operations on Customer.
 
 6) Have a play with each operation. These work against the deployed service.
